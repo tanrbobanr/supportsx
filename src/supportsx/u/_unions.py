@@ -93,6 +93,8 @@ from .._supports import (
 
 _T_co = TypeVar("_T_co", covariant=True)
 _T2_co = TypeVar("_T2_co", covariant=True)
+_T3_co = TypeVar("_T3_co", covariant=True)
+_T4_co = TypeVar("_T4_co", covariant=True)
 _T_contra = TypeVar("_T_contra", contravariant=True)
 _T2_contra = TypeVar("_T2_contra", contravariant=True)
 
@@ -320,20 +322,20 @@ class SupportsMathFunctions(
     SupportsDivMod[_T_contra, _T_co],
     SupportsFloor,
     SupportsRDivMod[_T_contra, _T_co],
-    SupportsRound,
+    SupportsRound[_T3_co, _T4_co],
     SupportsTrunc,
-    Protocol[_T_contra, _T_co, _T2_co]
+    Protocol[_T_contra, _T_co, _T2_co, _T3_co, _T4_co]
 ):
     """The math functions: `abs()`, `math.ceil()`, `divmod()`,
     `math.floor()`, `round()`, `math.trunc()`.
 
-    A protocol `[_T_contra, _T_co, _T2_co]` that is a union of:
+    A protocol `[_T_contra, _T_co, _T2_co, _T3_co, _T4_co]` that is a union of:
     - `SupportsAbs[_T2_co]`
     - `SupportsCeil`
     - `SupportsDivMod[_T_contra, _T_co]`
     - `SupportsFloor`
     - `SupportsRDivMod[_T_contra, _T_co]`
-    - `SupportsRound`
+    - `SupportsRound[_T3_co, _T4_co]`
     - `SupportsTrunc`
 
     """

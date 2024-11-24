@@ -24,6 +24,7 @@ from typing import (
     TypeVar,
     Union,
     runtime_checkable,
+    overload,
 )
 if sys.version_info >= (3, 10):
     from typing import ParamSpec
@@ -34,6 +35,7 @@ from types import TracebackType
 
 _T = TypeVar("_T")
 _T_co = TypeVar("_T_co", covariant=True)
+_T2_co = TypeVar("_T2_co", covariant=True)
 _T_contra = TypeVar("_T_contra", contravariant=True)
 _T2_contra = TypeVar("_T2_contra", contravariant=True)
 _P = ParamSpec("_P")
@@ -1235,16 +1237,22 @@ class SupportsROr(Protocol[_T_contra, _T_co]):
 
 
 @runtime_checkable
-class SupportsRound(Protocol):
+class SupportsRound(Protocol[_T_co, _T2_co]):
     """A protocol with one abstract method `__round__` of the form
-    `(int | None = None) -> Integral`.
+    `() -> _T_co, (int) -> _T2_co`.
 
     """
 
     __slots__ = ()
 
     @abc.abstractmethod
-    def __round__(self, ndigits: Union[int, None] = None, /) -> numbers.Integral:
+    @overload
+    def __round__(self) -> _T_co:
+        pass
+
+    @abc.abstractmethod
+    @overload
+    def __round__(self, ndigits: int, /) -> _T2_co:
         pass
 
 
