@@ -38,7 +38,7 @@ __author__ = "Tanner Corcoran"
 __email__ = "tannerbcorcoran@gmail.com"
 __license__ = "Apache 2.0 License"
 __copyright__ = "Copyright (c) 2024 Tanner Corcoran"
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __description__ = (
     "A Python library that supplies runtime-checkable, fully parameterized,"
     " and well-documented protocols for nearly all dunder methods/attributes."

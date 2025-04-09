@@ -12,7 +12,6 @@ __copyright__ = "Copyright (c) 2024 Tanner Corcoran"
 
 import sys
 import abc
-import numbers
 from collections.abc import (
     AsyncIterator,
     Awaitable,
@@ -361,7 +360,7 @@ class SupportsCeil(Protocol):
     __slots__ = ()
 
     @abc.abstractmethod
-    def __ceil__(self) -> numbers.Integral:
+    def __ceil__(self) -> int:
         pass
 
 
@@ -492,7 +491,7 @@ class SupportsFloor(Protocol):
     __slots__ = ()
 
     @abc.abstractmethod
-    def __floor__(self) -> numbers.Integral:
+    def __floor__(self) -> int:
         pass
 
 
@@ -1422,7 +1421,7 @@ class SupportsTrunc(Protocol):
     __slots__ = ()
 
     @abc.abstractmethod
-    def __trunc__(self) -> numbers.Integral:
+    def __trunc__(self) -> int:
         pass
 
 
